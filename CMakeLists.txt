@@ -19,9 +19,8 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILE_FLAGS}" )
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 
-include_directories( Game )
+include_directories( Item )
 set(files
-  Game/Game.cpp
 )
 
 project (rock-paper-scissors)
