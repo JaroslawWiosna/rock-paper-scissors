@@ -9,7 +9,19 @@
 #  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-add_subdirectory( cppVersion )
-add_subdirectory( weapon )
-add_subdirectory( engine )
-add_subdirectory( engineC )
+project(engine)
+
+file(GLOB src
+  "*.cpp"
+  ../../Engine/Engine.cpp
+)
+
+add_executable(${PROJECT_NAME} ${src} )
+
+target_link_libraries(
+  ${PROJECT_NAME} 
+  ${LINK_FLAGS}
+)
+
+
+add_test(${PROJECT_NAME} ${PROJECT_NAME})
