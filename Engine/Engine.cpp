@@ -37,45 +37,4 @@ std::size_t Engine::getNumberOfGamesPlayed() {
   return engineMoves.size();
 }
 
-Weapon EngineA::getWeapon() {
-  return Weapon::ROCK;
-}
-
-Weapon EngineB::getWeapon() {
-  unsigned int random = rand()%3;
-  if ( random == 0)
-    return Weapon::ROCK;
-  else if ( random == 1)
-    return Weapon::PAPER;
-  else if ( random == 2)
-    return Weapon::SCISSORS;
-  else
-    throw;
-}
-
-// TODO: refactor!!!
-Weapon EngineC::getWeapon() {
-  if ((getNumberOfGamesPlayed() >= 2) 
-      && (getLastOpponentMove() == getSecondToLastOpponentMove())) {
-    if (getLastOpponentMove() == Weapon::ROCK)
-      return Weapon::SCISSORS;
-    else if (getLastOpponentMove() == Weapon::PAPER)
-      return Weapon::ROCK;
-    else if (getLastOpponentMove() == Weapon::SCISSORS)
-      return Weapon::PAPER;
-    else
-      throw;
-  } else {
-      unsigned int random = rand()%3;
-      if ( random == 0)
-        return Weapon::ROCK;
-      else if ( random == 1)
-        return Weapon::PAPER;
-      else if ( random == 2)
-        return Weapon::SCISSORS;
-      else
-        throw;
-  }
-}
-
 
