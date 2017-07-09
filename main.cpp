@@ -1,15 +1,15 @@
 #include <iostream>
 #include <type_traits>
-#include "Item.hpp"
+#include "Weapon.hpp"
 using namespace std; //TODO: rome this line
 
-std::ostream& operator << (std::ostream& os, const Item& obj)
+std::ostream& operator << (std::ostream& os, const Weapon& obj)
 {
-  os << static_cast<std::underlying_type<Item>::type>(obj);
+  os << static_cast<std::underlying_type<Weapon>::type>(obj);
   return os;
 }
  
-std::string getResult(Item player1, Item player2)
+std::string getResult(Weapon player1, Weapon player2)
 {
   if (player1 > player2) {
     return "PLAYER ONE HAS WON!\n";
@@ -21,14 +21,14 @@ std::string getResult(Item player1, Item player2)
 }
  
 int main() {
-  Item player1 = Item::SCISSORS;
-  Item player2 = Item::ROCK;
+  Weapon player1 = Weapon::SCISSORS;
+  Weapon player2 = Weapon::ROCK;
   cout << getResult(player1,player2);
  
-  player2 = Item::PAPER;
+  player2 = Weapon::PAPER;
   cout << getResult(player1,player2);
  
-  player2 = Item::SCISSORS;
+  player2 = Weapon::SCISSORS;
   cout << getResult(player1,player2);
  
   return 0;
