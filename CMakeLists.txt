@@ -33,6 +33,9 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 include_directories( Weapon Engine )
 set(files
 Engine/Engine.cpp
+Engine/EngineA.cpp
+Engine/EngineB.cpp
+Engine/EngineC.cpp
 )
 
 project (rock-paper-scissors)

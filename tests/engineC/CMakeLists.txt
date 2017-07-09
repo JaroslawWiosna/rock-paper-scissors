@@ -14,6 +14,9 @@ project(engineC)
 file(GLOB src
   "*.cpp"
   ../../Engine/Engine.cpp
+  ../../Engine/EngineA.cpp
+  ../../Engine/EngineB.cpp
+  ../../Engine/EngineC.cpp
 )
 
 add_executable(${PROJECT_NAME} ${src} )
