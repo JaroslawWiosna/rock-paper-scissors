@@ -2,6 +2,7 @@
 #include <type_traits>
 #include <string>
 #include "Weapon.hpp"
+#include "Engine.hpp"
 using namespace std; //TODO: rome this line
 
 std::ostream& operator << (std::ostream& os, const Weapon& obj)
@@ -39,36 +40,6 @@ class Match {
 };
 */
 
-class Engine {
-  public:
-    virtual Weapon getWeapon() = 0;
-};
-
-class EngineA : public Engine {
-  public:
-    Weapon getWeapon();
-};
-
-Weapon EngineA::getWeapon() {
-  return Weapon::ROCK;
-}
-
-class EngineB : public Engine {
-  public:
-    Weapon getWeapon();
-};
-
-Weapon EngineB::getWeapon() {
-  unsigned int random = rand()%3;
-  if ( random == 0)
-    return Weapon::ROCK;
-  else if ( random == 1)
-    return Weapon::PAPER;
-  else if ( random == 2)
-    return Weapon::SCISSORS;
-}
-
-
 int main() {
   constexpr std::size_t numberOfGames = 30000000;
   srand (time(NULL));
@@ -86,6 +57,11 @@ int main() {
     Weapon weapon1 = player1->getWeapon();
     Weapon weapon2 = player2->getWeapon();
 //    cout << getResult(weapon1, weapon2);  
+    player1->saveEngineMove(weapon1);
+    player1->saveOpponentMove(weapon2);
+    player2->saveEngineMove(weapon2);
+    player2->saveOpponentMove(weapon1);
+
     if (weapon1 > weapon2)
       ++howManyTimesP1Won;
     else if (weapon1 < weapon2)
@@ -98,6 +74,9 @@ int main() {
   cout << endl;
   cout << "howManyTimesP2Won: " << howManyTimesP2Won;
   cout << endl;
+
+  delete player1;
+  delete player2;
 
   return 0;
 }
