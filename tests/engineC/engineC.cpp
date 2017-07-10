@@ -21,13 +21,13 @@ TEST(Test, EngineC_opponentGivesROCKTwoTimes)
   Weapon weapon1{};
   Weapon weapon2{};
 
-  weapon1 = player1->getWeapon();
+  weapon1 = Weapon::ROCK;
   weapon2 = Weapon::ROCK;
   
   player1->saveEngineMove(weapon1);
   player1->saveOpponentMove(weapon2);
 
-  weapon1 = player1->getWeapon();
+  weapon1 = Weapon::ROCK;
   weapon2 = Weapon::ROCK;
   
   player1->saveEngineMove(weapon1);
@@ -49,13 +49,13 @@ TEST(Test, EngineC_opponentGivesPAPERTwoTimes)
   Weapon weapon1{};
   Weapon weapon2{};
 
-  weapon1 = player1->getWeapon();
+  weapon1 = Weapon::ROCK;
   weapon2 = Weapon::PAPER;
   
   player1->saveEngineMove(weapon1);
   player1->saveOpponentMove(weapon2);
 
-  weapon1 = player1->getWeapon();
+  weapon1 = Weapon::ROCK;
   weapon2 = Weapon::PAPER;
   
   player1->saveEngineMove(weapon1);
@@ -77,13 +77,13 @@ TEST(Test, EngineC_opponentGivesSCISSORSTwoTimes)
   Weapon weapon1{};
   Weapon weapon2{};
 
-  weapon1 = player1->getWeapon();
+  weapon1 = Weapon::ROCK;
   weapon2 = Weapon::SCISSORS;
   
   player1->saveEngineMove(weapon1);
   player1->saveOpponentMove(weapon2);
 
-  weapon1 = player1->getWeapon();
+  weapon1 = Weapon::ROCK;
   weapon2 = Weapon::SCISSORS;
   
   player1->saveEngineMove(weapon1);

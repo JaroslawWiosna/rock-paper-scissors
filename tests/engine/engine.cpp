@@ -30,10 +30,19 @@ TEST(Test, EngineCheckLastMove)
   player->saveOpponentMove(weapon2);
   ASSERT_TRUE(player->getLastOpponentMove() == weapon2);
   ASSERT_TRUE(player->getSecondToLastOpponentMove() == weapon3);
+  
+  //TODO: Consider changing ASSERT_TRUE to ASSERT_EQ, which gives:
+  // Value of: weapon3
+  // Actual: 1-byte object <53>
+  // Expected: player->getSecondToLastOpponentMove()
+  // Which is: 1-byte object <50>
+
+  ASSERT_EQ(player->getLastOpponentMove(), weapon2);
+  ASSERT_EQ(player->getSecondToLastOpponentMove(), weapon3);
 
   player->saveEngineMove(weapon2);
-  player->saveOpponentMove(weapon3);
-  ASSERT_TRUE(player->getLastOpponentMove() == weapon3);
+  player->saveOpponentMove(weapon1);
+  ASSERT_TRUE(player->getLastOpponentMove() == weapon1);
   ASSERT_TRUE(player->getSecondToLastOpponentMove() == weapon2);
 
   delete player;

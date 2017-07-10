@@ -22,11 +22,11 @@ void Engine::saveOpponentMove(Weapon move) {
 }
 
 Weapon Engine::getLastOpponentMove() {
-  return getOpponentMove(-1);
+  return opponentMoves[opponentMoves.size() - 1];
 }
 
 Weapon Engine::getSecondToLastOpponentMove() {
-  return getOpponentMove(-2);
+  return opponentMoves[opponentMoves.size() - 2];
 }
 
 Weapon Engine::getOpponentMove(int moveNumber) {
