@@ -30,8 +30,9 @@ endif()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COMPILE_FLAGS}" )
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINK_EXECUTABLE} ${LINK_FLAGS}" )
 
-include_directories( Weapon Engine )
+include_directories( Weapon Engine Match )
 set(files
+Match/Match.cpp
 Engine/Engine.cpp
 Engine/EngineA.cpp
 Engine/EngineB.cpp

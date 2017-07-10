@@ -1,5 +1,5 @@
 /**
- * @file main.cpp
+ * @file engine.cpp
  *
  * @author Jaroslaw Wiosna
  *
@@ -10,30 +10,15 @@
  *
  */
 
-#include <iostream>
-#include <type_traits>
-#include <string>
-#include "Weapon.hpp"
+#include <gtest/gtest.h>
 #include "AllEngines.hpp"
 #include "Match.hpp"
 
-using namespace std; //TODO: rome this line
-
-std::string getResult(Weapon player1, Weapon player2)
+TEST(Test, Match)
 {
-  if (player1 > player2) {
-    return "PLAYER ONE HAS WON!\n";
-  } else if (player1 < player2) {
-    return "PLAYER TWO HAS WON!\n";
-  } else {
-    return "DRAW\n";
-  }
-}
-
-int main() {
   constexpr std::size_t numberOfGames = 3;
 
-  Engine* player1 = nullptr;
+  Engine* player1 = new EngineA;
   Engine* player2 = new EngineB;
   
   Match match(player1, player2, numberOfGames);
@@ -42,6 +27,10 @@ int main() {
 
   delete player1;
   delete player2;
-  return 0;
 }
 
+int main(int argc, char* argv[])
+{
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
