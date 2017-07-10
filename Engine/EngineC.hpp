@@ -1,5 +1,5 @@
 /**
- * @file EngineA.cpp
+ * @file EngineC.hpp
  *
  * @author Jaroslaw Wiosna
  *
@@ -10,10 +10,16 @@
  *
  */
 
-#include "EngineA.hpp"
-#include<cstdlib> // rand
+#ifndef ENGINEC_HPP
+#define ENGINEC_HPP
 
-Weapon EngineA::getWeapon() {
-  return Weapon::ROCK;
-}
+#include "Engine.hpp"
+//#include <string>
+#include <vector>
 
+class EngineC : public Engine {
+  public:
+    Weapon getWeapon();
+};
+
+#endif // ENGINE_HPP
