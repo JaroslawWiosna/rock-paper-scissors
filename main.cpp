@@ -15,6 +15,8 @@
 #include <string>
 #include "Weapon.hpp"
 #include "AllEngines.hpp"
+#include "Match.hpp"
+
 using namespace std; //TODO: rome this line
 
 std::ostream& operator << (std::ostream& os, const Weapon& obj)
@@ -53,43 +55,17 @@ class Match {
 */
 
 int main() {
-  constexpr std::size_t numberOfGames = 30000000;
-  srand (time(NULL));
-//  Player player1{"Player1"};
-//  Player player2{"Player2"};
+  constexpr std::size_t numberOfGames = 3000000;
 
   Engine* player1 = new EngineA;
   Engine* player2 = new EngineB;
   
-//  Match match(player1, player2);
-
-  std::size_t howManyTimesP1Won{};
-  std::size_t howManyTimesP2Won{};
-  for (std::size_t i=0 ; i < numberOfGames ; ++i) {
-    Weapon weapon1 = player1->getWeapon();
-    Weapon weapon2 = player2->getWeapon();
-//    cout << getResult(weapon1, weapon2);  
-    player1->saveEngineMove(weapon1);
-    player1->saveOpponentMove(weapon2);
-    player2->saveEngineMove(weapon2);
-    player2->saveOpponentMove(weapon1);
-
-    if (weapon1 > weapon2)
-      ++howManyTimesP1Won;
-    else if (weapon1 < weapon2)
-      ++howManyTimesP2Won;
-  }
-
-  cout << "Games played: " << numberOfGames;
-  cout << endl;
-  cout << "howManyTimesP1Won: " << howManyTimesP1Won;
-  cout << endl;
-  cout << "howManyTimesP2Won: " << howManyTimesP2Won;
-  cout << endl;
+  Match match(player1, player2, numberOfGames);
+  match.playMatch();
+  match.printResult();
 
   delete player1;
   delete player2;
-
   return 0;
 }
 
