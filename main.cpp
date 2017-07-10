@@ -19,12 +19,6 @@
 
 using namespace std; //TODO: rome this line
 
-std::ostream& operator << (std::ostream& os, const Weapon& obj)
-{
-  os << static_cast<std::underlying_type<Weapon>::type>(obj);
-  return os;
-}
- 
 std::string getResult(Weapon player1, Weapon player2)
 {
   if (player1 > player2) {
@@ -36,28 +30,10 @@ std::string getResult(Weapon player1, Weapon player2)
   }
 }
 
-class Player {
-  public:
-    Player(std::string playerName);
-  private:
-    std::string name;
-}; 
-
-Player::Player(std::string playerName) 
-  : name(playerName) {
-}
-
-/*
-class Match {
-  public:
-    Match(Player player1, Player player2);
-};
-*/
-
 int main() {
-  constexpr std::size_t numberOfGames = 3000000;
+  constexpr std::size_t numberOfGames = 3;
 
-  Engine* player1 = new EngineA;
+  Engine* player1 = nullptr;
   Engine* player2 = new EngineB;
   
   Match match(player1, player2, numberOfGames);

@@ -25,6 +25,8 @@ class Match {
     std::size_t getNumberOfGamesAlreadyPlayed();
     std::size_t getNumberOfGamesToBePlayed();
     void playGame();
+    void playGameWithHuman();
+    void playGameOfEngines();
     void playMatch();
     void printResult();
   private:

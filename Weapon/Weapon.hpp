@@ -14,10 +14,17 @@
 #define WEAPON_HPP
 
 #include <type_traits>
+#include <iostream>
 
 enum class Weapon:char { ROCK = 'R', PAPER = 'P', SCISSORS = 'S' };
 //enum class Weapon { ROCK, PAPER, SCISSORS};
-
+/*
+std::ostream& operator << (std::ostream& os, const Weapon& obj)
+{
+  os << static_cast<std::underlying_type<Weapon>::type>(obj);
+  return os;
+}
+*/
 inline bool operator>(Weapon lhs, Weapon rhs)
 {
   if (lhs == Weapon::ROCK && rhs == Weapon::SCISSORS) {

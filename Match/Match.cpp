@@ -45,6 +45,51 @@ std::size_t Match::getNumberOfGamesToBePlayed() {
 }
 
 void Match::playGame() {
+  if (pPlayerOne == nullptr)
+    playGameWithHuman();
+  else
+    playGameOfEngines();
+}
+
+void Match::playGameWithHuman() {
+
+  char choise{};
+  std::cout << "Select weapon. You must choose wisely..." << std::endl;
+  std::cin >> choise;
+
+  Weapon weapon1;
+  if (choise == 'R') {
+    weapon1 = Weapon::ROCK;
+  } else if (choise == 'P') {
+    weapon1 = Weapon::PAPER;
+  } else if (choise == 'S') {
+    weapon1 = Weapon::SCISSORS;
+  } else {
+    std::cout << "I'm done with you... " << std::endl;
+    throw;
+  }
+
+  Weapon weapon2 = pPlayerTwo->getWeapon();
+
+  pPlayerTwo->saveEngineMove(weapon2);
+  pPlayerTwo->saveOpponentMove(weapon1);
+
+  if (weapon1 > weapon2) {
+    ++mNumberOfGamesWonByPlayerOne;
+    std::cout << "You won this game" << std::endl;
+//    std::cout << weapon1 << " beat (?) " << weapon2 << std::endl;
+  } else if (weapon1 < weapon2) {
+    ++mNumberOfGamesWonByPlayerTwo;
+    std::cout << "You lost this game" << std::endl;
+//    std::cout << weapon1 << " lost to " << weapon2 << std::endl;
+  } else {
+    ++mNumberOfDraws;
+    std::cout << "It's a draw" << std::endl;
+//    std::cout << weapon1 << " equals " << weapon2 << std::endl;
+  }
+}
+
+void Match::playGameOfEngines() {
   Weapon weapon1 = pPlayerOne->getWeapon();
   Weapon weapon2 = pPlayerTwo->getWeapon();
 
@@ -60,6 +105,8 @@ void Match::playGame() {
   else
     ++mNumberOfDraws;
 }
+
+
 
 void Match::playMatch() {
   for (std::size_t i = 0; i < getNumberOfGames(); ++i) {
