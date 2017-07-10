@@ -11,7 +11,7 @@
  */
 
 #include <gtest/gtest.h>
-#include "Engine.hpp"
+#include "AllEngines.hpp"
 
 TEST(Test, EngineCheckLastMove)
 {

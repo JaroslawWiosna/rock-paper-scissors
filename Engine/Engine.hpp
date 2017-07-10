@@ -33,19 +33,4 @@ class Engine {
     std::vector<Weapon> opponentMoves;
 };
 
-class EngineA : public Engine {
-  public:
-    Weapon getWeapon();
-};
-
-class EngineB : public Engine {
-  public:
-    Weapon getWeapon();
-};
-
-class EngineC : public Engine {
-  public:
-    Weapon getWeapon();
-};
-
 #endif // ENGINE_HPP

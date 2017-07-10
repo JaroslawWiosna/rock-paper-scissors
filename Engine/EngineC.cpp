@@ -10,7 +10,7 @@
  *
  */
 
-#include "Engine.hpp"
+#include "EngineC.hpp"
 #include<cstdlib> // rand
 
 // TODO: refactor!!!
