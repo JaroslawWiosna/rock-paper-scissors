@@ -11,6 +11,7 @@
  */
 
 #include <gtest/gtest.h>
+#include <memory>
 #include "AllEngines.hpp"
 #include "Match.hpp"
 
@@ -18,15 +19,13 @@ TEST(Test, Match)
 {
   constexpr std::size_t numberOfGames = 3;
 
-  Engine* player1 = new EngineA;
-  Engine* player2 = new EngineB;
+  std::unique_ptr<Engine> player1{new EngineA};
+  std::unique_ptr<Engine> player2{new EngineB};
   
-  Match match(player1, player2, numberOfGames);
+  Match match(player1.get(), player2.get(), numberOfGames);
   match.playMatch();
   match.printResult();
 
-  delete player1;
-  delete player2;
 }
 
 int main(int argc, char* argv[])
