@@ -13,6 +13,7 @@
 #include <iostream>
 #include <type_traits>
 #include <string>
+#include <memory>
 #include "Weapon.hpp"
 #include "AllEngines.hpp"
 #include "Match.hpp"
@@ -33,15 +34,13 @@ std::string getResult(Weapon player1, Weapon player2)
 int main() {
   constexpr std::size_t numberOfGames = 3;
 
-  Engine* player1 = nullptr;
-  Engine* player2 = new EngineB;
-  
-  Match match(player1, player2, numberOfGames);
+  std::unique_ptr<Engine> player1{nullptr};
+  std::unique_ptr<Engine> player2{new EngineB};
+
+  Match match(player1.get(), player2.get(), numberOfGames);
   match.playMatch();
   match.printResult();
 
-  delete player1;
-  delete player2;
   return 0;
 }
 
