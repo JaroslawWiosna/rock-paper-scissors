@@ -11,12 +11,13 @@
  */
 
 #include <gtest/gtest.h>
+#include <memory>
 #include "AllEngines.hpp"
 
 TEST(Test, EngineCheckLastMove)
 {
   srand(time(NULL));
-  Engine* player = new EngineA;
+  std::unique_ptr<Engine> player{new EngineA};
 
   Weapon weapon1{Weapon::ROCK}; 
   Weapon weapon2{Weapon::PAPER};
@@ -44,8 +45,6 @@ TEST(Test, EngineCheckLastMove)
   player->saveOpponentMove(weapon1);
   ASSERT_TRUE(player->getLastOpponentMove() == weapon1);
   ASSERT_TRUE(player->getSecondToLastOpponentMove() == weapon2);
-
-  delete player;
 }
 
 

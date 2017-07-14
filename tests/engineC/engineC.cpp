@@ -11,12 +11,13 @@
  */
 
 #include <gtest/gtest.h>
+#include <memory>
 #include "AllEngines.hpp"
 
 TEST(Test, EngineC_opponentGivesROCKTwoTimes)
 {
   srand(time(NULL));
-  Engine* player1 = new EngineC;
+  std::unique_ptr<Engine> player1{new EngineC};
 
   Weapon weapon1{};
   Weapon weapon2{};
@@ -37,14 +38,12 @@ TEST(Test, EngineC_opponentGivesROCKTwoTimes)
   ASSERT_TRUE( Weapon::ROCK == player1->getLastOpponentMove());
   ASSERT_TRUE( Weapon::ROCK == player1->getSecondToLastOpponentMove());
   ASSERT_TRUE( weapon1 == Weapon::SCISSORS );
-
-  delete player1;
 }
 
 TEST(Test, EngineC_opponentGivesPAPERTwoTimes)
 {
   srand(time(NULL));
-  Engine* player1 = new EngineC;
+  std::unique_ptr<Engine> player1{new EngineC};
 
   Weapon weapon1{};
   Weapon weapon2{};
@@ -65,14 +64,12 @@ TEST(Test, EngineC_opponentGivesPAPERTwoTimes)
   ASSERT_TRUE( Weapon::PAPER == player1->getLastOpponentMove());
   ASSERT_TRUE( Weapon::PAPER == player1->getSecondToLastOpponentMove());
   ASSERT_TRUE( weapon1 == Weapon::ROCK );
-
-  delete player1;
 }
 
 TEST(Test, EngineC_opponentGivesSCISSORSTwoTimes)
 {
   srand(time(NULL));
-  Engine* player1 = new EngineC;
+  std::unique_ptr<Engine> player1{new EngineC};
 
   Weapon weapon1{};
   Weapon weapon2{};
@@ -93,8 +90,6 @@ TEST(Test, EngineC_opponentGivesSCISSORSTwoTimes)
   ASSERT_TRUE( Weapon::SCISSORS == player1->getLastOpponentMove());
   ASSERT_TRUE( Weapon::SCISSORS == player1->getSecondToLastOpponentMove());
   ASSERT_TRUE( weapon1 == Weapon::PAPER );
-
-  delete player1;
 }
 
 int main(int argc, char* argv[])
